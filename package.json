@@ -12,6 +12,7 @@
     "native-base": "^2.7.0",
     "react": "16.4.1",
     "react-native": "^0.56.0",
+    "react-native-wallpaper-manager": "^0.3.16",
     "react-navigation": "^2.6.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",

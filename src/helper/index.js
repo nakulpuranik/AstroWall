@@ -67,7 +67,7 @@ export const serverCommunication = (requestType, url, params, responseSuccessHan
  */
 export const log = (...input) => {
     if (__DEV__) {
-        console.log("CARE REACT :: ", ...input);
+        console.log("LOG :: ", ...input);
     }
 };
 
