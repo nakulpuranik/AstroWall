@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View, Keyboard, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
-import WallPaperManager from 'react-native-wallpaper-manager';
+import WallPaperManager from 'react-native-wallpaper-enhanced';
 import {  } from '../redux/modules/Home/HomeAction';
 import * as Strings from '../strings';
 import { log, showAlert } from '../helper';
@@ -23,7 +23,7 @@ class Home extends Component {
     renderAPOD(){
         if(this.props.loading){
             return (
-                <Spinner color='blue' />
+                <Spinner color='blue' />    
             );  
         }
         return(
@@ -49,7 +49,7 @@ class Home extends Component {
      */
     onImageLongPress(){
         log();
-        WallPaperManager.setWallPaper({uri: 'https://apod.nasa.gov/apod/image/1807/LLPeg_HubblePestana_2000.jpg'}, (res)=> console.log(res));
+        WallPaperManager.setWallpaper({uri: 'https://apod.nasa.gov/apod/image/1807/LLPeg_HubblePestana_2000.jpg'}, (res)=> console.log(res));
     }
 
     render(){
