@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { Image, View, Keyboard, TouchableNativeFeedback } from 'react-native';
+import { Image, View, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import WallPaperManager from 'react-native-wallpaper-enhanced';
 import {  } from '../redux/modules/Home/HomeAction';
 import * as Strings from '../strings';
-import { log, showAlert } from '../helper';
+import { log } from '../helper';
 import {
-  Container, Header, Content,
-  Card, CardItem, Body, Text,
-  Title, Right, Button, Form,
-  Item, Input, Footer, Spinner,Grid,Row,Col,Left,Spinners
-} from 'native-base';
+    Container, Header, Content, Body, Text,
+    Title, Right, Footer, Spinner,Grid,Row } from 'native-base';
 
 /**
  * Home screen component shows the APOD.
@@ -29,9 +26,9 @@ class Home extends Component {
         return(
             <Grid>
                 <Row size={75}>
-                    <TouchableNativeFeedback onLongPress={this.onImageLongPress()} >
+                    <TouchableNativeFeedback style onLongPress={this.onImageLongPress()} >
                         <Image
-                                style={{ flex:1, height: undefined, width: undefined}}
+                                style={styles.wallpaperImage}
                                 source={{uri: 'https://apod.nasa.gov/apod/image/1807/LLPeg_HubblePestana_2000.jpg'}}
                                 resizeMode="contain"
                             />
@@ -54,7 +51,7 @@ class Home extends Component {
 
     render(){
         return(
-            <Container style={{ flex: 1 }}>
+            <Container style={styles.mainContainer}>
                 <Header>
                     <Body>
                         <Title>AstroWall</Title>
@@ -80,24 +77,33 @@ class Home extends Component {
 }
 
 const styles = {
+    mainContainer:{
+        flex: 1 
+    },
+    wallpaperImage : {
+        flex:1, 
+        height: undefined, 
+        width: undefined
+    },
     cardContainer: {
-      flexDirection: 'column',
-      flex: 1
+        flexDirection: 'column',
+        flex: 1
     },
     footerContainer: {
-      backgroundColor: '#F8F8F8',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: 50,
-      alignItems: 'center'
-    }
-  };
+        backgroundColor: '#F8F8F8',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 50,
+        alignItems: 'center'
+    },
+    text: { }
+};
 
-  const mapStateToProps = ({ home }) => {
+const mapStateToProps = ({ home }) => {
     const { loading } = home;
     return { loading };
-  };
+};
 
-  export default connect(mapStateToProps,{})(Home);
+export default connect(mapStateToProps,{})(Home);
