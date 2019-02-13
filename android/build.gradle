@@ -16,6 +16,21 @@ buildscript {
     }
 }
 
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion ext.compileSdkVersion     //do this in android/app/build.gradle too
+                buildToolsVersion ext.buildToolsVersion  //do this in android/app/build.gradle too
+                lintOptions {
+                    abortOnError false
+                }
+            }
+        }
+    }
+}
+
+
 allprojects {
     repositories {
         mavenLocal()
